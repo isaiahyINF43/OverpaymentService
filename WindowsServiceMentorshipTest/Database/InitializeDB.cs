@@ -16,6 +16,33 @@ namespace WindowsServiceMentorshipTest.Database
                                         [Value] VARCHAR(2048) NULL
                                         )";
 
+            string createTableQuery2 = @"CREATE TABLE IF NOT EXISTS [OverPayment] (
+                                        [OverPaymentID] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                                        [ClaimNumber] NVARCHAR(20) NOT NULL REFERENCES Claims(ClaimNumber),
+                                        [MemberID] INTEGER FOREIGN KEY REFERENCES Members(MembersID),
+                                        [BalanceAmt] INTEGER 0,
+                                        [OverPaymentAmt] INTEGER 0 NOT NULL,
+                                        [SysSrcSyncDate] DATETIME2 GetDate(),
+                                        [LastUpdated] DATETIME2 GetDate()
+                                        )";
+
+            string createTableQuery3 = @"CREATE TABLE IF NOT EXISTS [Members] (
+                                        [MemberID] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                                        [FirstName] NVARCHAR(20) NOT NULL,
+                                        [LastName] NVARCHAR(20) NOT NULL,
+                                        [Email] NVARCHAR(50) NOT NULL,
+                                        [Address] NVARCHAR(20) NOT NULL,
+                                        [City] NVARCHAR(20) NOT NULL,
+                                        [State] NVARCHAR(2) NOT NULL,
+                                        [PostCode] NVARCHAR(10) NOT NULL,
+                                        [SysSrcSyncDate] DATETIME2 GetDate()
+                                        )";
+
+            string createTableQuery4 = @"CREATE TABLE IF NOT EXISTS [Claims] (
+                                        [ClaimNumber] NVARCHAR(20) NOT NULL PRIMARY KEY AUTOINCREMENT,
+                                        [SysSrcSyncDate] DATETIME2 GetDate()
+                                        )";
+
             //Configure where db file is created
             string executable = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string path = (System.IO.Path.GetDirectoryName(executable));

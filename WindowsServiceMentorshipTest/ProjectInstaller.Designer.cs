@@ -39,8 +39,8 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.Description = "WindowsServiceMentorshipTest";
-            this.serviceInstaller1.DisplayName = "WindowsServiceMentorshipTest";
+            this.serviceInstaller1.Description = "Overpayment Windows Service Description";
+            this.serviceInstaller1.DisplayName = "Overpayment Windows Service";
             this.serviceInstaller1.ServiceName = "Service1";
             // 
             // ProjectInstaller
